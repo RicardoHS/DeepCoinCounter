@@ -247,7 +247,8 @@ def save_all_coins(coins, folder_path):
         try:
             img.save(coin_path + f"/coin_{i}.jpeg", "JPEG")
         except SystemError:
-            print(f"INFO: Saving coin_{i} failed.")
+            print(f"INFO: Saving coin_{i} ({value}) failed.")
+            os.remove(coin_path + f"/coin_{i}.jpeg")
 
 
 def main():
