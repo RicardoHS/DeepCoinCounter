@@ -18,8 +18,12 @@ def load_random_background(background_folder, base_ratio, mobile_camera_ratio=1.
 
     # compute crop ratios
     back_w, back_h = back.size
-    camera_w = base_ratio * mobile_camera_ratio
-    camera_h = base_ratio
+    if back_w >= back_h:
+        camera_w = base_ratio * mobile_camera_ratio
+        camera_h = base_ratio
+    else:
+        camera_w = base_ratio
+        camera_h = base_ratio * mobile_camera_ratio
 
     # compute crop dimensions
     left = np.random.randint(back_w - camera_w)
